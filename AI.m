@@ -58,9 +58,9 @@ end
 function [fig1,fig2,boundary,params] = initialize_plot(m,b,L,C0,C1,xs)
 
     %get data for contour plot
-    [X,Y] = meshgrid(-4:0.1:4);
-    for i=1:length(X)
-        for j=1:length(X)
+    [X,Y] = meshgrid(-4:0.1:4); l = length(X); Z = zeros(l,l);
+    for i=1:l
+        for j=1:l
             Z(i,j) = L(X(1,j),X(1,i));
         end
     end
@@ -94,7 +94,7 @@ end
 %update plots of parameters and decision boundary 
 
 function [fig1,fig2,boundary,params] = ...
-    update_plot(m,b,fig1,fig2,boundary,params,xs);
+    update_plot(m,b,fig1,fig2,boundary,params,xs)
 
     %delete current decision boundary and parameter point
     delete(boundary); delete(params);
